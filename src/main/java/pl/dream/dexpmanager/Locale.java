@@ -18,6 +18,7 @@ public enum Locale {
     NOT_ENOUGH_EXP("notEnoughExp", ""),
     NOT_ENOUGH_ITEM("notEnoughItem", ""),
     NOT_ENOUGH_MONEY("notEnoughMoney", ""),
+    STORAGE_ITEM_USE("storageItemUse", ""),
 
     COMMAND_INFO_SELF("command.info.self", ""),
     COMMAND_INFO_OTHER("command.info.other", ""),

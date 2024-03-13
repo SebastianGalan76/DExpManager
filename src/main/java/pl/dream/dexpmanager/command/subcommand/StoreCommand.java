@@ -94,7 +94,7 @@ public class StoreCommand implements ISubCommand {
         }
         if(config.itemCostEnable){
             if(Utils.getItemAmountInInventory(player, config.itemCost)<config.itemCost.getAmount()){
-                Message.sendMessage(player, Locale.NOT_ENOUGH_ITEM.toString();
+                Message.sendMessage(player, Locale.NOT_ENOUGH_ITEM.toString());
                 return;
             }
         }
@@ -106,7 +106,7 @@ public class StoreCommand implements ISubCommand {
         Experience.setExp(player, -exp);
 
         ItemStack storageItem = config.getStorageItem();
-        NBT.add(DExpManager.getPlugin(), storageItem, "storedExp", String.valueOf(exp));
+        NBT.add(DExpManager.getPlugin(), storageItem, "storageExp", String.valueOf(exp));
         Utils.giveItemToPlayer(player, storageItem);
 
         if(config.moneyCostEnable){

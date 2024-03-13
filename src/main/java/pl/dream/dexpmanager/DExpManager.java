@@ -5,6 +5,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.dream.dexpmanager.command.ExpCommand;
 import pl.dream.dexpmanager.controller.ConfigController;
+import pl.dream.dexpmanager.listener.PlayerUseStorageItemListener;
 
 public final class DExpManager extends JavaPlugin {
     private static DExpManager plugin;
@@ -23,6 +24,7 @@ public final class DExpManager extends JavaPlugin {
         loadPlugin();
 
         getCommand("exp").setExecutor(new ExpCommand());
+        getServer().getPluginManager().registerEvents(new PlayerUseStorageItemListener(), this);
     }
 
     @Override
