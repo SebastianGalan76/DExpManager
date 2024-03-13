@@ -1,6 +1,7 @@
 package pl.dream.dexpmanager;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.dream.dexpmanager.command.ExpCommand;
 
 public final class DExpManager extends JavaPlugin {
     private static DExpManager plugin;
@@ -9,6 +10,9 @@ public final class DExpManager extends JavaPlugin {
     public void onEnable() {
         plugin = this;
 
+        loadPlugin();
+
+        getCommand("exp").setExecutor(new ExpCommand());
     }
 
     @Override

@@ -10,7 +10,14 @@ import java.io.IOException;
 import java.util.*;
 
 public enum Locale {
-    NO_PERMISSION("noPermission", "");
+    NO_PERMISSION("noPermission", ""),
+    PLAYER_IS_OFFLINE("playerIsOffline", ""),
+
+    COMMAND_INFO_SELF("command.info.self", ""),
+    COMMAND_INFO_OTHER("command.info.other", ""),
+    COMMAND_INFO_USE("command.info.use", ""),
+
+    NO_PLAYER("noPlayer", "");
 
     private final String path;
     private String text;
