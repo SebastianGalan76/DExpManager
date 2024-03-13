@@ -1,0 +1,5 @@
+name: DExpManager
+version: '${project.version}'
+main: pl.dream.dexpmanager.DExpManager
+api-version: '1.20'
+authors: [DreaMPL]
