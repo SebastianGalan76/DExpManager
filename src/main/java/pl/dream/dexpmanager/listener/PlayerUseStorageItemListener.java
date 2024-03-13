@@ -1,7 +1,5 @@
 package pl.dream.dexpmanager.listener;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,45 +19,41 @@ public class PlayerUseStorageItemListener implements Listener {
     public void onStorageItemUse(PlayerInteractEvent e){
         Player p = e.getPlayer();
 
-        ItemStack itemStackMainHand = p.getInventory().getItemInMainHand();
-        if(itemStackMainHand.getType() == DExpManager.getPlugin().configController.getStorageItem().getType()){
-            if(NBT.has(DExpManager.getPlugin(), itemStackMainHand, "storageExp")){
-                if(e.getAction()==Action.RIGHT_CLICK_BLOCK && e.getHand() == EquipmentSlot.HAND){
-                    int exp = Integer.parseInt(NBT.get(DExpManager.getPlugin(), itemStackMainHand, "storageExp"));
-                    p.getInventory().getItemInMainHand().setAmount(itemStackMainHand.getAmount() - 1);
-                    Experience.changeExp(p, exp);
+        if(e.getHand()==EquipmentSlot.HAND){
+            if(e.getAction()==Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.RIGHT_CLICK_AIR){
+                ItemStack itemStackMainHand = p.getInventory().getItemInMainHand();
+                if(itemStackMainHand.getType() == DExpManager.getPlugin().configController.getStorageItem().getType()){
+                    if(NBT.has(DExpManager.getPlugin(), itemStackMainHand, "storageExp")){
+                        int exp = Integer.parseInt(NBT.get(DExpManager.getPlugin(), itemStackMainHand, "storageExp"));
+                        p.getInventory().getItemInMainHand().setAmount(itemStackMainHand.getAmount() - 1);
 
-                    p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_BOTTLE_THROW, 0.5f, 0.5f);
-                    Message.sendMessage(p, Locale.STORAGE_ITEM_USE.toString()
-                            .replace("{EXP}", String.valueOf(exp)));
+                        useStorageItem(p, exp, e);
+                    }
                 }
-                else{
-                    Message.sendMessage(p, Locale.LOOK_AT_BLOCK.toString());
-                }
-
-                e.setCancelled(true);
             }
         }
+        if(e.getHand()==EquipmentSlot.OFF_HAND){
+            if(e.getAction()==Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.RIGHT_CLICK_AIR){
+                ItemStack itemStackOffHand = p.getInventory().getItemInOffHand();
+                if(itemStackOffHand.getType() == DExpManager.getPlugin().configController.getStorageItem().getType()){
+                    if(NBT.has(DExpManager.getPlugin(), itemStackOffHand, "storageExp")){
+                        int exp = Integer.parseInt(NBT.get(DExpManager.getPlugin(), itemStackOffHand, "storageExp"));
+                        p.getInventory().getItemInOffHand().setAmount(itemStackOffHand.getAmount() - 1);
 
-        ItemStack itemStackOffHand = p.getInventory().getItemInOffHand();
-        if(itemStackOffHand.getType() == DExpManager.getPlugin().configController.getStorageItem().getType()){
-            if(NBT.has(DExpManager.getPlugin(), itemStackOffHand, "storageExp")){
-                if(e.getAction()==Action.RIGHT_CLICK_BLOCK && e.getHand() == EquipmentSlot.OFF_HAND){
-                    int exp = Integer.parseInt(NBT.get(DExpManager.getPlugin(), itemStackOffHand, "storageExp"));
-                    p.getInventory().getItemInOffHand().setAmount(itemStackOffHand.getAmount() - 1);
-                    Experience.changeExp(p, exp);
-
-                    p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_BOTTLE_THROW, 0.5f, 0.5f);
-                    Message.sendMessage(p, Locale.STORAGE_ITEM_USE.toString()
-                            .replace("{EXP}", String.valueOf(exp)));
+                        useStorageItem(p, exp, e);
+                    }
                 }
-                else{
-                    Message.sendMessage(p, Locale.LOOK_AT_BLOCK.toString());
-                }
-
-                e.setCancelled(true);
             }
         }
+    }
 
+    private void useStorageItem(Player p, int exp, PlayerInteractEvent e){
+        Experience.changeExp(p, exp);
+
+        p.playSound(p.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 0.5f, 0.5f);
+        Message.sendMessage(p, Locale.STORAGE_ITEM_USE.toString()
+                .replace("{EXP}", String.valueOf(exp)));
+
+        e.setCancelled(true);
     }
 }

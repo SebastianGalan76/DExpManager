@@ -6,6 +6,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 import org.jetbrains.annotations.NotNull;
 import pl.dream.dexpmanager.DExpManager;
 import pl.dream.dexpmanager.Locale;
@@ -17,9 +19,18 @@ import pl.dream.dreamlib.Message;
 import pl.dream.dreamlib.NBT;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class StoreCommand implements ISubCommand {
+
+    private HashMap<UUID, BukkitTask> confirmation;
+
+    public StoreCommand(){
+        confirmation = new HashMap<>();
+    }
+
     @Override
     public void run(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
         if(!(sender instanceof Player)){
@@ -103,6 +114,12 @@ public class StoreCommand implements ISubCommand {
             }
         }
 
+        if(!checkConfirmation(player.getUniqueId())){
+            Message.sendMessage(player, Locale.COMMAND_STORE_CONFIRMATION.getList());
+
+            return;
+        }
+
         String message = Locale.COMMAND_STORE_SUCCESS.toString();
         message = message.replace("{EXP}", String.valueOf(exp));
         Message.sendMessage(player, message);
@@ -129,5 +146,26 @@ public class StoreCommand implements ISubCommand {
         if(config.itemCostEnable){
             Utils.takeItemFromPlayer(player, config.itemCost, config.itemCost.getAmount());
         }
+    }
+
+    private boolean checkConfirmation(UUID uuid){
+        if(confirmation.containsKey(uuid)){
+            confirmation.remove(uuid).cancel();
+
+            return true;
+        }
+        JavaPlugin plugin = DExpManager.getPlugin();
+
+        BukkitTask bukkitTask = plugin.getServer().getScheduler().runTaskLaterAsynchronously(plugin, new Runnable() {
+            @Override
+            public void run() {
+                if(confirmation.containsKey(uuid)){
+                    confirmation.remove(uuid).cancel();
+                }
+            }
+        }, 400);
+
+        confirmation.put(uuid, bukkitTask);
+        return false;
     }
 }

@@ -39,13 +39,12 @@ public class GiveCommand implements ISubCommand {
                 return;
             }
 
-            if(sender.hasPermission("dexpmanager.give.admin")){
+            if(sender.hasPermission("dexpmanager.rank.admin")){
                 int playerLevel = player.getLevel();
                 int playerExp = Experience.getExp(player);
                 playerLevel += level;
 
                 int exp = Experience.getExpAtLevel(playerLevel) - playerExp;
-                Bukkit.getLogger().warning("SSS" + playerLevel +" ss "+playerExp +" sss "+ exp +"xxx "+Experience.getExpAtLevel(level));
                 success(sender, player, exp);
             }
             else{
@@ -94,7 +93,7 @@ public class GiveCommand implements ISubCommand {
                 return;
             }
 
-            if(sender.hasPermission("dexpmanager.give.admin")){
+            if(sender.hasPermission("dexpmanager.rank.admin")){
                 success(sender, player, exp);
             }
             else{

@@ -11,6 +11,7 @@ import java.util.*;
 
 public enum Locale {
     NO_PERMISSION("noPermission", ""),
+    RELOAD("reload", ""),
     PLAYER_IS_OFFLINE("playerIsOffline", ""),
     NaN("NaN", ""),
     LESS_THAN_ZERO("lessThanZero", ""),
@@ -36,6 +37,10 @@ public enum Locale {
 
     COMMAND_STORE_USE("command.store.use", ""),
     COMMAND_STORE_SUCCESS("command.store.success", ""),
+    COMMAND_STORE_CONFIRMATION("command.store.confirmation", ""),
+
+    COMMAND_HELP_PLAYER("command.help.player", ""),
+    COMMAND_HELP_ADMIN("command.help.admin", ""),
 
     NO_PLAYER("noPlayer", "");
 

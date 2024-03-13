@@ -1,4 +1,5 @@
 noPermission: "&8» &cNie masz wymaganych uprawnień!"
+reload: "&aPlugin został przeładowany"
 noPlayer: "&8» &cTylko gracz na serwerze może wykonać tę komendę!"
 playerIsOffline: "&8» &cNie ma takiego gracza na serwerze!"
 NaN: "&8» &cWprowadzona wartość nie jest liczbą!"
@@ -30,3 +31,22 @@ command:
   store:
     use: "&c» &7Poprawne użycie &e/exp store [liczba]/[poziom]L/max"
     success: "&c» &7Zachowałeś &e{EXP} &7punktów doświadczenia w butelce!"
+    confirmation:
+      - "&e» &7Zachowanie poziomu kosztuje:"
+      - "&e    • &7Pieniądze: &e500$"
+      - "&e    • &7Przedmiot: &9Szklana butelka"
+      - ""
+      - "&cWykonaj komendę ponownie, aby zaakceptować!"
+  help:
+    player:
+      - "&e» &7Lista komend:"
+      - "&8• &e/exp info &8- &7Pokazuje Twoje statystyki punktów doświadczenia"
+      - "&8• &e/exp store [liczba]/[liczba]L/max &8- &7Zachowujesz punkty doświadczenia"
+      - "&8• &e/exp give [nick] [liczba]/[liczba]L/max &8- &7Przekazujesz graczowi punkty"
+    admin:
+      - "&e» &7Lista komend:"
+      - "&8• &e/exp info &8- &7Pokazuje Twoje statystyki punktów doświadczenia"
+      - "&8• &e/exp store [liczba]/[liczba]L/max &8- &7Zachowujesz punkty doświadczenia"
+      - "&8• &e/exp give [nick] [liczba]/[liczba]L &8- &7Przekazujesz graczowi punkty"
+      - "&8• &e/exp take [nick] [liczba]/[liczba]L/max &8- &7Zabierasz graczowi punkty"
+      - "&8• &e/exp set [nick] [liczba]/[liczba]L &8- &7Ustawiasz graczowi punkty"

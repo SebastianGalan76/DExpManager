@@ -5,8 +5,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 import pl.dream.dexpmanager.DExpManager;
+import pl.dream.dexpmanager.Locale;
 import pl.dream.dexpmanager.command.subcommand.*;
 import pl.dream.dexpmanager.utils.Utils;
+import pl.dream.dreamlib.Message;
 
 public class ExpCommand implements CommandExecutor {
     private final ISubCommand info;
@@ -14,6 +16,7 @@ public class ExpCommand implements CommandExecutor {
     private final ISubCommand give;
     private final ISubCommand take;
     private final ISubCommand store;
+    private final ISubCommand help;
 
     public ExpCommand(){
         info = new InfoCommand();
@@ -21,6 +24,7 @@ public class ExpCommand implements CommandExecutor {
         give = new GiveCommand();
         take = new TakeCommand();
         store = new StoreCommand();
+        help = new HelpCommand();
     }
 
     @Override
@@ -29,6 +33,7 @@ public class ExpCommand implements CommandExecutor {
             if(args[0].equalsIgnoreCase("reload")){
                 if(Utils.checkPermission(sender, "dexpmanager.exp.reload")){
                     DExpManager.getPlugin().reloadPlugin();
+                    Message.sendMessage(sender, Locale.RELOAD.toString());
                 }
             }
             else if(args[0].equalsIgnoreCase("info")){
@@ -46,7 +51,9 @@ public class ExpCommand implements CommandExecutor {
             else if(args[0].equalsIgnoreCase("store")){
                 store.run(sender, cmd, label, args);
             }
-
+            else if(args[0].equalsIgnoreCase("help")){
+                help.run(sender, cmd, label, args);
+            }
         }
 
         return true;
