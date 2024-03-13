@@ -4,16 +4,19 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
+import pl.dream.dexpmanager.command.subcommand.GiveCommand;
 import pl.dream.dexpmanager.command.subcommand.InfoCommand;
 import pl.dream.dexpmanager.command.subcommand.SetCommand;
 
 public class ExpCommand implements CommandExecutor {
     private final ISubCommand info;
     private final ISubCommand set;
+    private final ISubCommand give;
 
     public ExpCommand(){
         info = new InfoCommand();
         set = new SetCommand();
+        give = new GiveCommand();
     }
 
     @Override
@@ -24,6 +27,9 @@ public class ExpCommand implements CommandExecutor {
             }
             if(args[0].equalsIgnoreCase("set")){
                 set.run(sender, cmd, label, args);
+            }
+            if(args[0].equalsIgnoreCase("give")){
+                give.run(sender, cmd, label, args);
             }
         }
 

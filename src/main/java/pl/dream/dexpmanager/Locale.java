@@ -14,6 +14,8 @@ public enum Locale {
     PLAYER_IS_OFFLINE("playerIsOffline", ""),
     NaN("NaN", ""),
     LESS_THAN_ZERO("lessThanZero", ""),
+    NOT_ENOUGH_LEVEL("notEnoughLevel", ""),
+    NOT_ENOUGH_EXP("notEnoughExp", ""),
 
     COMMAND_INFO_SELF("command.info.self", ""),
     COMMAND_INFO_OTHER("command.info.other", ""),
@@ -21,6 +23,9 @@ public enum Locale {
 
     COMMAND_SET_USE("command.set.use", ""),
     COMMAND_SET_SUCCESS("command.set.success", ""),
+
+    COMMAND_GIVE_USE("command.give.use", ""),
+    COMMAND_GIVE_SUCCESS("command.give.success", ""),
 
     NO_PLAYER("noPlayer", "");
 
