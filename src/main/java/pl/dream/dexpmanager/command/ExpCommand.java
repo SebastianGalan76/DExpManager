@@ -44,7 +44,7 @@ public class ExpCommand implements CommandExecutor {
             else if(args[0].equalsIgnoreCase("take")){
                 take.run(sender, cmd, label, args);
             }
-            
+
         }
 
         return true;

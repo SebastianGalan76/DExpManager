@@ -23,3 +23,6 @@ command:
   take:
     use: "&c» &7Poprawne użycie &e/exp take [NICK] [liczba]/[poziom]L/max"
     success: "&c» &7Zabrałeś &e{EXP} &7punktów doświadczenia graczowi &e{PLAYER}&7!"
+  store:
+    use: "&c» &7Poprawne użycie &e/exp store [liczba]/[poziom]L/max"
+    success: "&c» &7Zachowałeś &e{EXP} &7punktów doświadczenia w butelce!"

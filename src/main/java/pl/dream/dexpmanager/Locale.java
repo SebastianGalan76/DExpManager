@@ -30,6 +30,9 @@ public enum Locale {
     COMMAND_TAKE_USE("command.take.use", ""),
     COMMAND_TAKE_SUCCESS("command.take.success", ""),
 
+    COMMAND_STORE_USE("command.store.use", ""),
+    COMMAND_STORE_SUCCESS("command.store.success", ""),
+
     NO_PLAYER("noPlayer", "");
 
     private final String path;
