@@ -16,6 +16,8 @@ public enum Locale {
     LESS_THAN_ZERO("lessThanZero", ""),
     NOT_ENOUGH_LEVEL("notEnoughLevel", ""),
     NOT_ENOUGH_EXP("notEnoughExp", ""),
+    NOT_ENOUGH_ITEM("notEnoughItem", ""),
+    NOT_ENOUGH_MONEY("notEnoughMoney", ""),
 
     COMMAND_INFO_SELF("command.info.self", ""),
     COMMAND_INFO_OTHER("command.info.other", ""),

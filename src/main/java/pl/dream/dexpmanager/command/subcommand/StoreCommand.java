@@ -1,14 +1,19 @@
 package pl.dream.dexpmanager.command.subcommand;
 
+import jdk.vm.ci.meta.Local;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
+import pl.dream.dexpmanager.DExpManager;
 import pl.dream.dexpmanager.Locale;
 import pl.dream.dexpmanager.command.ISubCommand;
+import pl.dream.dexpmanager.controller.ConfigController;
 import pl.dream.dexpmanager.utils.Experience;
 import pl.dream.dexpmanager.utils.Utils;
 import pl.dream.dreamlib.Message;
+import pl.dream.dreamlib.NBT;
 
 public class StoreCommand implements ISubCommand {
     @Override
@@ -78,12 +83,37 @@ public class StoreCommand implements ISubCommand {
     }
 
     private void success(Player player, int exp){
-        //TODO check costs
+        ConfigController config = DExpManager.getPlugin().configController;
+
+        if(config.moneyCostEnable){
+            if(DExpManager.getEconomy().getBalance(player)<config.moneyCost){
+                Message.sendMessage(player, Locale.NOT_ENOUGH_MONEY.toString()
+                        .replace("{MONEY}", String.valueOf(config.moneyCost)));
+                return;
+            }
+        }
+        if(config.itemCostEnable){
+            if(Utils.getItemAmountInInventory(player, config.itemCost)<config.itemCost.getAmount()){
+                Message.sendMessage(player, Locale.NOT_ENOUGH_ITEM.toString();
+                return;
+            }
+        }
 
         String message = Locale.COMMAND_STORE_SUCCESS.toString();
         message = message.replace("{EXP}", String.valueOf(exp));
         Message.sendMessage(player, message);
 
         Experience.setExp(player, -exp);
+
+        ItemStack storageItem = config.getStorageItem();
+        NBT.add(DExpManager.getPlugin(), storageItem, "storedExp", String.valueOf(exp));
+        Utils.giveItemToPlayer(player, storageItem);
+
+        if(config.moneyCostEnable){
+            DExpManager.getEconomy().withdrawPlayer(player, config.moneyCost);
+        }
+        if(config.itemCostEnable){
+            Utils.takeItemFromPlayer(player, config.itemCost, config.itemCost.getAmount());
+        }
     }
 }

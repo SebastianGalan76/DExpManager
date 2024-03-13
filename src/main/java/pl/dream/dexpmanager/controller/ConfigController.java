@@ -10,7 +10,7 @@ import pl.dream.dreamlib.NBT;
 public class ConfigController {
     private final FileConfiguration config;
 
-    public ItemStack storageItem;
+    private ItemStack storageItem;
 
     public boolean itemCostEnable;
     public boolean moneyCostEnable;
@@ -22,6 +22,10 @@ public class ConfigController {
         this.config = config;
 
         loadConfig();
+    }
+
+    public ItemStack getStorageItem(){
+        return storageItem.clone();
     }
 
     private void loadConfig(){
@@ -36,6 +40,7 @@ public class ConfigController {
 
             if(itemCost==null){
                 Bukkit.getLogger().warning("Incorrect itemCost!");
+                itemCostEnable = false;
             }
         }
 
@@ -45,6 +50,7 @@ public class ConfigController {
 
             if(moneyCost<0){
                 Bukkit.getLogger().warning("Incorrect moneyCost!");
+                moneyCostEnable = false;
             }
         }
     }
