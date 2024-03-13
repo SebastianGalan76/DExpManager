@@ -20,3 +20,6 @@ command:
   give:
     use: "&c» &7Poprawne użycie &e/exp give [NICK] [liczba]/[poziom]L/max"
     success: "&c» &7Przekazałeś &e{EXP} &7punktów doświadczenia graczowi &e{PLAYER}&7!"
+  take:
+    use: "&c» &7Poprawne użycie &e/exp take [NICK] [liczba]/[poziom]L/max"
+    success: "&c» &7Zabrałeś &e{EXP} &7punktów doświadczenia graczowi &e{PLAYER}&7!"
