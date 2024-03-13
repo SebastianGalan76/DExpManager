@@ -21,16 +21,16 @@ command:
     use: "&c» &7Poprawne użycie &e/exp info [NICK]"
   set:
     use: "&c» &7Poprawne użycie &e/exp set [NICK] [liczba]/[poziom]L"
-    success: "&c» &7Ustawiłeś ilość punktów doświadczenia graczowi &e{PLAYER}&7! Poziom: &e{LEVEL} ({EXP})"
+    success: "&e» &7Ustawiłeś ilość punktów doświadczenia graczowi &e{PLAYER}&7! Poziom: &e{LEVEL} ({EXP})"
   give:
     use: "&c» &7Poprawne użycie &e/exp give [NICK] [liczba]/[poziom]L/max"
-    success: "&c» &7Przekazałeś &e{EXP} &7punktów doświadczenia graczowi &e{PLAYER}&7!"
+    success: "&e» &7Przekazałeś &e{EXP} &7punktów doświadczenia graczowi &e{PLAYER}&7!"
   take:
     use: "&c» &7Poprawne użycie &e/exp take [NICK] [liczba]/[poziom]L/max"
-    success: "&c» &7Zabrałeś &e{EXP} &7punktów doświadczenia graczowi &e{PLAYER}&7!"
+    success: "&e» &7Zabrałeś &e{EXP} &7punktów doświadczenia graczowi &e{PLAYER}&7!"
   store:
     use: "&c» &7Poprawne użycie &e/exp store [liczba]/[poziom]L/max"
-    success: "&c» &7Zachowałeś &e{EXP} &7punktów doświadczenia w butelce!"
+    success: "&e» &7Zachowałeś &e{EXP} &7punktów doświadczenia w butelce!"
     confirmation:
       - "&e» &7Zachowanie poziomu kosztuje:"
       - "&e    • &7Pieniądze: &e500$"

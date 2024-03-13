@@ -50,7 +50,7 @@ public class PlayerUseStorageItemListener implements Listener {
     private void useStorageItem(Player p, int exp, PlayerInteractEvent e){
         Experience.changeExp(p, exp);
 
-        p.playSound(p.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 0.5f, 0.5f);
+        p.playSound(p.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1.5f, 1f);
         Message.sendMessage(p, Locale.STORAGE_ITEM_USE.toString()
                 .replace("{EXP}", String.valueOf(exp)));
 
