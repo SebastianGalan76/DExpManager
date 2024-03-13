@@ -12,10 +12,15 @@ import java.util.*;
 public enum Locale {
     NO_PERMISSION("noPermission", ""),
     PLAYER_IS_OFFLINE("playerIsOffline", ""),
+    NaN("NaN", ""),
+    LESS_THAN_ZERO("lessThanZero", ""),
 
     COMMAND_INFO_SELF("command.info.self", ""),
     COMMAND_INFO_OTHER("command.info.other", ""),
     COMMAND_INFO_USE("command.info.use", ""),
+
+    COMMAND_SET_USE("command.set.use", ""),
+    COMMAND_SET_SUCCESS("command.set.success", ""),
 
     NO_PLAYER("noPlayer", "");
 

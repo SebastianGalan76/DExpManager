@@ -1,6 +1,8 @@
 noPermission: "&8» &cNie masz wymaganych uprawnień!"
 noPlayer: "&8» &cTylko gracz na serwerze może wykonać tę komendę!"
 playerIsOffline: "&8» &cNie ma takiego gracza na serwerze!"
+NaN: "&8» &cWprowadzona wartość nie jest liczbą!"
+lessThanZero: "&8» &cWprowadzona wartość może być liczbą ujemną!"
 command:
   info:
     self:
@@ -9,5 +11,7 @@ command:
     other:
       - '&e» &7Gracz {PLAYER} posiada &e{LEVEL} &7poziom (&e{EXP} EXP&7)'
       - '&e» &7Potrzebuje &e{REQUIRED_EXP} EXP&7, aby awansować na kolejny poziom!'
-    use:
-      - "&c» &7Poprawne użycie &e/exp info [NICK]"
+    use: "&c» &7Poprawne użycie &e/exp info [NICK]"
+  set:
+    use: "&c» &7Poprawne użycie &e/exp set [NICK] [liczba]/[poziom]L"
+    success: "&c» &7Ustawiłeś ilość punktów doświadczenia graczowi &e{PLAYER}&7! Poziom: &e{LEVEL} ({EXP})"

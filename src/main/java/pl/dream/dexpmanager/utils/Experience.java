@@ -125,6 +125,24 @@ public final class Experience {
         player.setExp((float) (levelAndExp - level));
     }
 
+    /**
+     * Set a Player's experience.
+     *
+     *
+     * @param player the Player affected
+     * @param exp the amount of experience to set
+     */
+    public static void setExp(Player player, int exp) {
+        if (exp < 0) {
+            exp = 0;
+        }
+
+        double levelAndExp = getLevelFromExp(exp);
+        int level = (int) levelAndExp;
+        player.setLevel(level);
+        player.setExp((float) (levelAndExp - level));
+    }
+
     private Experience() {}
 
 }

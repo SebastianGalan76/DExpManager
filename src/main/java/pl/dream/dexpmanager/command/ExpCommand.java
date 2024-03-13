@@ -5,12 +5,15 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 import pl.dream.dexpmanager.command.subcommand.InfoCommand;
+import pl.dream.dexpmanager.command.subcommand.SetCommand;
 
 public class ExpCommand implements CommandExecutor {
     private final ISubCommand info;
+    private final ISubCommand set;
 
     public ExpCommand(){
         info = new InfoCommand();
+        set = new SetCommand();
     }
 
     @Override
@@ -18,6 +21,9 @@ public class ExpCommand implements CommandExecutor {
         if(args.length>0){
             if(args[0].equalsIgnoreCase("info")){
                 info.run(sender, cmd, label, args);
+            }
+            if(args[0].equalsIgnoreCase("set")){
+                set.run(sender, cmd, label, args);
             }
         }
 
