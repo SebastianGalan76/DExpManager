@@ -43,13 +43,11 @@ public class TakeCommand implements ISubCommand {
             playerLevel -= level;
 
             int exp = playerExp - Experience.getExpAtLevel(playerLevel);
-            Experience.setExp(player, -exp);
             success(sender, player, exp);
         }
         else if(value.equalsIgnoreCase("max")){
             int exp = Experience.getExp(player);
 
-            Experience.setExp(player, -exp);
             success(sender, player, exp);
         }
         else{
@@ -66,7 +64,6 @@ public class TakeCommand implements ISubCommand {
                 return;
             }
 
-            Experience.setExp(player, -exp);
             success(sender, player, exp);
         }
     }
@@ -76,5 +73,6 @@ public class TakeCommand implements ISubCommand {
         message = message.replace("{PLAYER}", player.getName())
                 .replace("{EXP}", String.valueOf(exp));
         Message.sendMessage(sender, message);
+        Experience.changeExp(player, -exp);
     }
 }

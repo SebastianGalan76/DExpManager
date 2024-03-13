@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 import pl.dream.dexpmanager.DExpManager;
 import pl.dream.dexpmanager.Locale;
@@ -14,6 +15,9 @@ import pl.dream.dexpmanager.utils.Experience;
 import pl.dream.dexpmanager.utils.Utils;
 import pl.dream.dreamlib.Message;
 import pl.dream.dreamlib.NBT;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StoreCommand implements ISubCommand {
     @Override
@@ -28,7 +32,7 @@ public class StoreCommand implements ISubCommand {
         }
 
         if(args.length!=2){
-            Message.sendMessage(sender, Locale.COMMAND_GIVE_USE.toString());
+            Message.sendMessage(sender, Locale.COMMAND_STORE_USE.toString());
             return;
         }
 
@@ -103,9 +107,19 @@ public class StoreCommand implements ISubCommand {
         message = message.replace("{EXP}", String.valueOf(exp));
         Message.sendMessage(player, message);
 
-        Experience.setExp(player, -exp);
+        Experience.changeExp(player, -exp);
 
         ItemStack storageItem = config.getStorageItem();
+        ItemMeta itemMeta = storageItem.getItemMeta();
+        List<String> convertedLore = new ArrayList<>();
+        for(String line:itemMeta.getLore()){
+            line = line.replace("{PLAYER}", player.getName())
+                    .replace("{EXP}", String.valueOf(exp));
+            convertedLore.add(line);
+        }
+        itemMeta.setLore(convertedLore);
+        storageItem.setItemMeta(itemMeta);
+
         NBT.add(DExpManager.getPlugin(), storageItem, "storageExp", String.valueOf(exp));
         Utils.giveItemToPlayer(player, storageItem);
 

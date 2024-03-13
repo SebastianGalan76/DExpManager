@@ -5,10 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 import pl.dream.dexpmanager.DExpManager;
-import pl.dream.dexpmanager.command.subcommand.GiveCommand;
-import pl.dream.dexpmanager.command.subcommand.InfoCommand;
-import pl.dream.dexpmanager.command.subcommand.SetCommand;
-import pl.dream.dexpmanager.command.subcommand.TakeCommand;
+import pl.dream.dexpmanager.command.subcommand.*;
 import pl.dream.dexpmanager.utils.Utils;
 
 public class ExpCommand implements CommandExecutor {
@@ -16,12 +13,14 @@ public class ExpCommand implements CommandExecutor {
     private final ISubCommand set;
     private final ISubCommand give;
     private final ISubCommand take;
+    private final ISubCommand store;
 
     public ExpCommand(){
         info = new InfoCommand();
         set = new SetCommand();
         give = new GiveCommand();
         take = new TakeCommand();
+        store = new StoreCommand();
     }
 
     @Override
@@ -43,6 +42,9 @@ public class ExpCommand implements CommandExecutor {
             }
             else if(args[0].equalsIgnoreCase("take")){
                 take.run(sender, cmd, label, args);
+            }
+            else if(args[0].equalsIgnoreCase("store")){
+                store.run(sender, cmd, label, args);
             }
 
         }

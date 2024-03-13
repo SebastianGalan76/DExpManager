@@ -45,7 +45,7 @@ public class GiveCommand implements ISubCommand {
                 playerLevel += level;
 
                 int exp = Experience.getExpAtLevel(playerLevel) - playerExp;
-                Experience.setExp(player, exp);
+                Bukkit.getLogger().warning("SSS" + playerLevel +" ss "+playerExp +" sss "+ exp +"xxx "+Experience.getExpAtLevel(level));
                 success(sender, player, exp);
             }
             else{
@@ -64,8 +64,7 @@ public class GiveCommand implements ISubCommand {
                 int playerExp = Experience.getExp(p);
                 int exp = playerExp - Experience.getExpAtLevel(playerLevel-level);
 
-                Experience.setExp(p, -exp);
-                Experience.setExp(player, exp);
+                Experience.changeExp(p, -exp);
                 success(sender, player, exp);
             }
         }
@@ -78,8 +77,7 @@ public class GiveCommand implements ISubCommand {
             Player p = (Player) sender;
             int exp = Experience.getExp(p);
 
-            Experience.setExp(p, -exp);
-            Experience.setExp(player, exp);
+            Experience.changeExp(p, -exp);
             success(sender, player, exp);
         }
         else{
@@ -97,7 +95,6 @@ public class GiveCommand implements ISubCommand {
             }
 
             if(sender.hasPermission("dexpmanager.give.admin")){
-                Experience.setExp(player, exp);
                 success(sender, player, exp);
             }
             else{
@@ -113,8 +110,7 @@ public class GiveCommand implements ISubCommand {
                     return;
                 }
 
-                Experience.setExp(p, -exp);
-                Experience.setExp(player, exp);
+                Experience.changeExp(p, -exp);
                 success(sender, player, exp);
             }
         }
@@ -125,5 +121,7 @@ public class GiveCommand implements ISubCommand {
         message = message.replace("{PLAYER}", player.getName())
                 .replace("{EXP}", String.valueOf(exp));
         Message.sendMessage(sender, message);
+
+        Experience.changeExp(player, exp);
     }
 }

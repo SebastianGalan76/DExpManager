@@ -2,19 +2,20 @@ noPermission: "&8» &cNie masz wymaganych uprawnień!"
 noPlayer: "&8» &cTylko gracz na serwerze może wykonać tę komendę!"
 playerIsOffline: "&8» &cNie ma takiego gracza na serwerze!"
 NaN: "&8» &cWprowadzona wartość nie jest liczbą!"
-lessThanZero: "&8» &cWprowadzona wartość może być liczbą ujemną!"
-notEnoughLevel: "&8» &cNie posiadasz wystarczającego poziomu!"
+lessThanZero: "&8» &cWprowadzona wartość nie może być liczbą ujemną!"
+notEnoughLevel: "&8» &cNie posiadasz takiego poziomu!"
 notEnoughExp: "&8» &cNie posiadasz tylu punktów doświadczenia!"
 notEnoughItem: "&8» &cNie posiadasz wymaganych przedmiotów! Potrzebujesz &eSzklanej butelki&7."
 notEnoughMoney: "&8» &cNie posiadasz wystarczającej ilości pieniędzy. Potrzebujesz &a{MONEY}$&7."
 storageItemUse: "&8» &7Otrzymałeś &e{EXP} &7punktów doświadczenia."
+lookAtBlock: "&8» &cMusisz patrzeć się na blok, aby to zrobić."
 command:
   info:
     self:
       - '&e» &7Posiadasz obecnie &e{LEVEL} &7poziom (&e{EXP} EXP&7)'
       - '&e» &7Potrzebujesz &e{REQUIRED_EXP} EXP&7, aby awansować na kolejny poziom!'
     other:
-      - '&e» &7Gracz {PLAYER} posiada &e{LEVEL} &7poziom (&e{EXP} EXP&7)'
+      - '&e» &7Gracz &e{PLAYER} &7posiada &e{LEVEL} &7poziom (&e{EXP} EXP&7)'
       - '&e» &7Potrzebuje &e{REQUIRED_EXP} EXP&7, aby awansować na kolejny poziom!'
     use: "&c» &7Poprawne użycie &e/exp info [NICK]"
   set:
