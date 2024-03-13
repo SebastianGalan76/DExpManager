@@ -3,15 +3,32 @@ package pl.dream.dexpmanager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class DExpManager extends JavaPlugin {
+    private static DExpManager plugin;
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        plugin = this;
 
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+
+    }
+
+    public void reloadPlugin(){
+        reloadConfig();
+
+        loadPlugin();
+    }
+
+    private void loadPlugin(){
+        saveDefaultConfig();
+
+        Locale.loadMessages(this);
+    }
+
+    public static DExpManager getPlugin(){
+        return plugin;
     }
 }
