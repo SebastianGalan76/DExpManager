@@ -1,0 +1,18 @@
+storage:
+  item:
+    material: EXPERIENCE_BOTTLE
+    name: "&eButelka doświadczenia"
+    lore:
+      - ""
+      - "&e» &7Butelka przechowuje: &e{EXP} EXP"
+      - ""
+      - "&e» &7Twórca: &e{PLAYER}"
+      - ""
+  moneyCost:
+    enable: true
+    cost: 500
+  itemCost:
+    enable: true
+    item:
+      material: GLASS_BOTTLE
+      amount: 1
